@@ -8,14 +8,11 @@ const App = () => {
   const[taskData, setTaskData] = useState(TASKS);
 
   const toggleCompleteFeature = (taskId) => {
-    const tasks = taskData.map(task => {
-      if (task.id === taskId) {
-        return { ...task, isComplete: !task.isComplete};
-      } else {
-        return task;
-      }
-    });
-    setTaskData(tasks);
+    setTaskData(taskData => taskData.map(task => 
+      task.id === taskId
+       ? {...task, isComplete : !task.isComplete}
+       : task
+    ));
   };
 
   const deleteTask = (taskId) => {
